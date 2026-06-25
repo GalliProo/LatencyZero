@@ -1,0 +1,99 @@
+name: 🚀 Build LatencyZero Portable EXE
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_reason:
+        description: 'Build reason (optional)'
+        required: false
+        default: 'Manual build'
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'examples/**'
+      - '.gitignore'
+
+permissions:
+  contents: write
+
+jobs:
+  quality-check:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --legacy-peer-deps
+      - name: ✅ Run tests
+        run: npx jest --no-cache
+      - name: ✅ Run lint
+        run: npx eslint .
+      - name: ✅ TypeScript check
+        run: npx tsc --noEmit
+
+  build:
+    needs: quality-check
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: win-node-modules-${{ hashFiles('package.json') }}
+      - name: 📥 Install dependencies
+        run: npm install --legacy-peer-deps
+      - name: 🗄️ Generate Prisma client
+        run: npx prisma generate
+        env:
+          DATABASE_URL: "file:./db/custom.db"
+      - name: ⚡ Build Next.js standalone
+        run: npx next build
+        env:
+          DATABASE_URL: "file:./db/custom.db"
+      - name: 📂 Copy static assets
+        shell: cmd
+        run: |
+          if exist .next\static xcopy /E /I /Y .next\static .next\standalone\.next\static >nul
+          if exist public xcopy /E /I /Y public .next\standalone\public >nul
+      - name: ⚡ Compile Electron
+        run: |
+          if not exist electron-dist mkdir electron-dist
+          npx esbuild electron/main.ts --bundle --platform=node --outfile=electron-dist/main.js --external:electron
+          npx esbuild electron/preload.ts --bundle --platform=node --outfile=electron-dist/preload.js --external:electron
+      - name: 🎯 Build portable EXE
+        run: npx electron-builder --win --config electron-builder.yml --publish never
+      - name: 📤 Upload LatencyZero.exe
+        uses: actions/upload-artifact@v4
+        with:
+          name: LatencyZero-Portable-EXE
+          path: release/LatencyZero.exe
+          retention-days: 90
+          if-no-files-found: error
+      - name: 📋 Create Release (on tags only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release/LatencyZero.exe
+          name: LatencyZero ${{ github.ref_name }}
+          body: |
+            ## LatencyZero Portable — Single Click to Open
+
+            **Download `LatencyZero.exe` below.**
+            Double-click to open. No installation required.
+
+            ### Features:
+            - 6 hardware collectors (DPC/ISR, GPU, Network, Processes, Display, Controller)
+            - Real-time performance dashboard
+            - Root cause analysis
+            - Report export
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

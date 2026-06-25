@@ -1,0 +1,161 @@
+LATENCYMON V7.04
+Computer Name: PROBLEM-PC
+Test Duration: 00:05:32
+OS: Windows 11 Home 23H2 (Build 22631.4169)
+CPU: AMD Ryzen 9 7950X
+BIOS: American Megatrends International, LLC. 2.10, 2023-08-22
+
+─────────────────────────────────────────────────────────────────────────────────
+
+SYMBOLIC INTERRUPT (ISR) DPC and ISR execution times and counts
+
+HIGHEST EXECUTION (ms)
+MODULE_NAME                    EXECUTION_TIME (ms)
+RT64.sys                              2.450
+ndis.sys                             1.890
+dxgkrnl.sys                          0.876
+USBXHCI.SYS                          0.654
+acpiex.sys                           0.543
+ntoskrnl.exe                          0.234
+storahci.sys                         0.123
+
+HIGHEST DPC ROUTINE EXECUTION TIME (ms)
+MODULE_NAME                    EXECUTION_TIME (ms)
+RT64.sys                              2.340
+ndis.sys                             1.765
+dxgkrnl.sys                          0.823
+USBXHCI.SYS                          0.598
+acpiex.sys                           0.521
+ntoskrnl.exe                          0.198
+
+HIGHEST ISR ROUTINE EXECUTION TIME (ms)
+MODULE_NAME                    EXECUTION_TIME (ms)
+RT64.sys                              2.450
+ndis.sys                             1.890
+dxgkrnl.sys                          0.876
+USBXHCI.SYS                          0.654
+
+DPC COUNT
+MODULE_NAME                       COUNT
+RT64.sys                           8976
+ndis.sys                          12340
+dxgkrnl.sys                       7654
+USBXHCI.SYS                       5432
+acpiex.sys                        4321
+ntoskrnl.exe                      3210
+storahci.sys                      2100
+nvlddmkm.sys                      1876
+HDAudBus.sys                      1543
+portcls.sys                       1098
+dxgmms1.sys                        876
+Wdf01000.sys                       654
+tcpip.sys                          543
+ pci.sys                           432
+Total:                            61055
+
+DPC TIME (ms)
+MODULE_NAME                    EXECUTION_TIME (ms)
+RT64.sys                           845.234
+ndis.sys                           678.123
+dxgkrnl.sys                        234.567
+USBXHCI.SYS                        187.654
+acpiex.sys                         143.210
+ntoskrnl.exe                        98.765
+storahci.sys                        67.432
+nvlddmkm.sys                        45.678
+HDAudBus.sys                        34.567
+portcls.sys                         23.456
+dxgmms1.sys                         18.765
+Wdf01000.sys                        12.345
+tcpip.sys                            8.765
+ pci.sys                             5.432
+Total:                             2403.543
+
+ISR COUNT
+MODULE_NAME                       COUNT
+RT64.sys                          12340
+ndis.sys                          15670
+USBXHCI.SYS                       8765
+acpiex.sys                        6543
+ntoskrnl.exe                      4567
+storahci.sys                      3210
+nvlddmkm.sys                      2345
+HDAudBus.sys                      1876
+portcls.sys                       1234
+dxgkrnl.sys                       1098
+Total:                            58848
+
+ISR TIME (ms)
+MODULE_NAME                    EXECUTION_TIME (ms)
+RT64.sys                          678.456
+ndis.sys                          543.210
+USBXHCI.SYS                        198.765
+acpiex.sys                         154.321
+ntoskrnl.exe                        87.654
+storahci.sys                        56.789
+nvlddmkm.sys                        34.567
+HDAudBus.sys                        23.456
+portcls.sys                         15.678
+dxgkrnl.sys                         12.345
+Total:                            1815.241
+
+REPORTED DPCs
+MODULE_NAME                    EXECUTION_TIME (ms)    COUNT
+RT64.sys                                2.340          8976
+ndis.sys                                1.765         12340
+dxgkrnl.sys                             0.823          7654
+USBXHCI.SYS                             0.598          5432
+acpiex.sys                             0.521          4321
+ntoskrnl.exe                            0.198          3210
+
+REPORTED ISRs
+MODULE_NAME                    EXECUTION_TIME (ms)    COUNT
+RT64.sys                                2.450         12340
+ndis.sys                                1.890         15670
+USBXHCI.SYS                             0.654          8765
+acpiex.sys                             0.543          6543
+ntoskrnl.exe                            0.234          4567
+
+HARD PAGEFAULTS
+Process                          Count
+Chrome.exe                         15432
+Discord.exe                        8765
+csrss.exe                          3456
+System                             2345
+dwm.exe                            1987
+explorer.exe                       1234
+svchost.exe                        987
+Spotify.exe                        654
+Total                             35860
+
+PROCESSES
+Process                          PID    Priority    CPU%
+System                            4      High       2.3
+csrss.exe                         624    Normal     0.8
+svchost.exe                       932    Normal     1.2
+dwm.exe                          2032    Normal     4.5
+explorer.exe                     3420    Normal     1.1
+Chrome.exe                       5432    Normal     8.7
+Discord.exe                      8765    Normal     3.2
+Spotify.exe                      9876    Normal     0.9
+svchost.exe                      10244   Normal     1.8
+svchost.exe                      11120   Normal     0.6
+
+RESOURCES
+CPU Utilization:                    24.8%
+Memory Available:               8.2 GB / 32.0 GB
+Physical Memory:               32.0 GB
+
+Total hard pagefaults: 35860
+
+CONCLUSION: One or more DPC routines that execute on this system are causing real-time audio to stutter. Check the drivers that are listed below.
+
+PER-CPU DPC and ISR execution times
+CPU 0: DPC=45.678ms ISR=23.456ms
+CPU 1: DPC=38.901ms ISR=19.876ms
+CPU 2: DPC=52.345ms ISR=28.901ms
+CPU 3: DPC=41.234ms ISR=21.567ms
+CPU 4: DPC=48.765ms ISR=25.432ms
+CPU 5: DPC=36.543ms ISR=18.234ms
+CPU 6: DPC=44.321ms ISR=22.109ms
+CPU 7: DPC=39.876ms ISR=20.543ms

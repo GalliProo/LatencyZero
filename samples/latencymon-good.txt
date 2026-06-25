@@ -1,0 +1,159 @@
+LATENCYMON V7.04
+Computer Name: GAMING-PC
+Test Duration: 00:05:32
+OS: Windows 11 Pro 23H2 (Build 22631.4460)
+CPU: Intel Core i9-14900K
+BIOS: American Megatrends International, LLC. 1.20, 2024-01-15
+
+─────────────────────────────────────────────────────────────────────────────────
+
+SYMBOLIC INTERRUPT (ISR) DPC and ISR execution times and counts
+
+HIGHEST EXECUTION (ms)
+MODULE_NAME                    EXECUTION_TIME (ms)
+ntoskrnl.exe                          0.024
+ndis.sys                             0.018
+dxgkrnl.sys                          0.012
+USBXHCI.SYS                          0.008
+ACPI.sys                             0.005
+storahci.sys                         0.004
+HDAudBus.sys                         0.003
+portcls.sys                          0.002
+dxgmms1.sys                          0.002
+nvlddmkm.sys                         0.001
+Wdf01000.sys                         0.001
+tcpip.sys                            0.001
+ndis.sys                             0.001
+ pci.sys                             0.001
+
+HIGHEST DPC ROUTINE EXECUTION TIME (ms)
+MODULE_NAME                    EXECUTION_TIME (ms)
+ntoskrnl.exe                          0.022
+ndis.sys                             0.015
+dxgkrnl.sys                          0.010
+USBXHCI.SYS                          0.006
+ACPI.sys                             0.004
+storahci.sys                         0.003
+nvlddmkm.sys                         0.002
+HDAudBus.sys                         0.002
+
+HIGHEST ISR ROUTINE EXECUTION TIME (ms)
+MODULE_NAME                    EXECUTION_TIME (ms)
+ntoskrnl.exe                          0.024
+ndis.sys                             0.018
+dxgkrnl.sys                          0.012
+
+DPC COUNT
+MODULE_NAME                       COUNT
+ntoskrnl.exe                      12458
+ndis.sys                          8932
+dxgkrnl.sys                       6741
+USBXHCI.SYS                       3421
+ACPI.sys                          2890
+storahci.sys                      2103
+nvlddmkm.sys                      1876
+HDAudBus.sys                      1204
+portcls.sys                       987
+dxgmms1.sys                       876
+Wdf01000.sys                      654
+tcpip.sys                         543
+ pci.sys                          432
+Total:                            43117
+
+DPC TIME (ms)
+MODULE_NAME                    EXECUTION_TIME (ms)
+ntoskrnl.exe                        12.456
+ndis.sys                            8.234
+dxgkrnl.sys                         5.678
+USBXHCI.SYS                         2.345
+ACPI.sys                            1.890
+storahci.sys                        1.234
+nvlddmkm.sys                        0.987
+HDAudBus.sys                        0.654
+portcls.sys                         0.432
+dxgmms1.sys                         0.321
+Wdf01000.sys                        0.234
+tcpip.sys                           0.187
+ pci.sys                            0.123
+Total:                              34.775
+
+ISR COUNT
+MODULE_NAME                       COUNT
+ntoskrnl.exe                      18432
+ndis.sys                          9876
+USBXHCI.SYS                       4521
+ACPI.sys                          3210
+storahci.sys                      2345
+nvlddmkm.sys                      1654
+HDAudBus.sys                      1098
+portcls.sys                       876
+dxgkrnl.sys                       765
+Total:                            42777
+
+ISR TIME (ms)
+MODULE_NAME                    EXECUTION_TIME (ms)
+ntoskrnl.exe                        8.765
+ndis.sys                            5.432
+USBXHCI.SYS                         2.109
+ACPI.sys                            1.567
+storahci.sys                        1.023
+nvlddmkm.sys                        0.765
+HDAudBus.sys                        0.432
+portcls.sys                         0.321
+dxgkrnl.sys                         0.287
+Total:                              20.701
+
+REPORTED DPCs
+MODULE_NAME                    EXECUTION_TIME (ms)    COUNT
+ndis.sys                                0.015          8932
+dxgkrnl.sys                             0.010          6741
+USBXHCI.SYS                             0.006          3421
+ACPI.sys                                0.004          2890
+storahci.sys                            0.003          2103
+nvlddmkm.sys                            0.002          1876
+HDAudBus.sys                            0.002          1204
+portcls.sys                             0.002           987
+
+REPORTED ISRs
+MODULE_NAME                    EXECUTION_TIME (ms)    COUNT
+ndis.sys                                0.018          9876
+USBXHCI.SYS                             0.008          4521
+ACPI.sys                                0.005          3210
+storahci.sys                            0.004          2345
+nvlddmkm.sys                            0.003          1654
+HDAudBus.sys                            0.003          1098
+
+HARD PAGEFAULTS
+Process                          Count
+csrss.exe                            234
+System                               189
+dwm.exe                               156
+explorer.exe                          98
+LatencyMon.exe                        45
+Total                                 722
+
+PROCESSES
+Process                          PID    Priority    CPU%
+System                            4      High       0.1
+csrss.exe                         624    Normal     0.0
+smss.exe                          692    Normal     0.0
+services.exe                      748    Normal     0.2
+lsass.exe                         780    Normal     0.1
+svchost.exe                       932    Normal     0.3
+svchost.exe                      1044    Normal     0.1
+dwm.exe                          2032    Normal     2.1
+explorer.exe                     3420    Normal     0.4
+LatencyMon.exe                  18760    Normal     0.8
+
+RESOURCES
+CPU Utilization:                     8.2%
+Memory Available:              24.5 GB / 32.0 GB
+Physical Memory:               32.0 GB
+
+CONCLUSION: The system appears to be suitable for handling real-time audio and other tasks. Individual DPC execution times are within acceptable limits. No individual driver appears to be causing problems.
+
+PER-CPU DPC and ISR execution times
+CPU 0: DPC=4.234ms ISR=2.109ms
+CPU 1: DPC=3.567ms ISR=1.890ms
+CPU 2: DPC=5.123ms ISR=2.456ms
+CPU 3: DPC=3.890ms ISR=1.934ms

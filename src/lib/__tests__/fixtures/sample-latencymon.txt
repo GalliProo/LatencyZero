@@ -1,0 +1,92 @@
+VIOLATION SUMMARY
+Total number of DPC routines: 3456
+Total number of ISR routines: 2100
+
+CONCLUSION: Your system appears to be suitable for handling real-time audio and other real-time tasks.
+
+Test duration: 00:01:30
+OS: Windows 11 Build 22631.4890
+CPU: Intel(R) Core(TM) i9-13900K @ 5.80GHz
+BIOS: 1.20.0
+
+────────────────────────────────────────────────────────────────────────────
+
+HIGHEST EXECUTION (ms)
+Module  Execution Time
+ntoskrnl.exe  0.500
+ndis.sys  0.200
+nvlddmkm.sys  0.150
+
+────────────────────────────────────────────────────────────────────────────
+
+HIGHEST INTERRUPT TO PROCESS LATENCY (ms)
+Module  Execution Time
+System  1.200
+
+────────────────────────────────────────────────────────────────────────────
+
+HIGHEST DPC ROUTINE EXECUTION TIME (ms)
+Module  Execution Time
+ndis.sys  0.350
+USBXHCI.SYS  0.100
+
+────────────────────────────────────────────────────────────────────────────
+
+HIGHEST ISR ROUTINE EXECUTION TIME (ms)
+Module  Execution Time
+nvlddmkm.sys  0.050
+acpi.sys  0.020
+
+────────────────────────────────────────────────────────────────────────────
+
+DPC COUNT
+Module_NAME   Count
+ndis.sys  1500
+USBXHCI.SYS  800
+ntoskrnl.exe  700
+Total  3000
+
+────────────────────────────────────────────────────────────────────────────
+
+DPC TIME
+Module_NAME   Execution_Time (ms)
+ndis.sys  5.000
+USBXHCI.SYS  3.000
+ntoskrnl.exe  1.500
+Total  9.500
+
+────────────────────────────────────────────────────────────────────────────
+
+ISR COUNT
+Module_NAME   Count
+nvlddmkm.sys  1200
+acpi.sys  600
+ndis.sys  300
+Total  2100
+
+────────────────────────────────────────────────────────────────────────────
+
+ISR TIME
+Module_NAME   Execution_Time (ms)
+nvlddmkm.sys  2.000
+acpi.sys  0.500
+ndis.sys  0.300
+Total  2.800
+
+────────────────────────────────────────────────────────────────────────────
+
+HARD PAGEFAULTS
+Process  Count
+chrome.exe  500
+discord.exe  200
+vscode.exe  100
+Total  800
+
+Total hard pagefaults: 800
+
+────────────────────────────────────────────────────────────────────────────
+
+PER-CPU DPC/ISR
+CPU 0: DPC=4.500ms ISR=2.000ms
+CPU 1: DPC=3.000ms ISR=1.500ms
+CPU 2: DPC=2.000ms ISR=1.000ms

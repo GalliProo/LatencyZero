@@ -1,0 +1,29 @@
+appId: com.latencyzero.app
+productName: LatencyZero
+copyright: Copyright © 2024 LatencyZero
+directories:
+  buildResources: electron/resources
+  output: release
+files:
+  - electron-dist/**/*
+  - .next/standalone/**/*
+  - .next/static/**/*
+  - public/**/*
+  - prisma/**/*
+  - "!node_modules/**/*"
+  - "!.next/**/node_modules/@img/**"
+  - "!.next/**/node_modules/@next/swc-darwin*/**"
+  - "!.next/**/node_modules/@next/swc-linux*/**"
+extraMetadata:
+  main: electron-dist/main.js
+win:
+  target:
+    - target: portable
+      arch:
+        - x64
+  icon: electron/resources/icon.png
+portable:
+  artifactName: LatencyZero.exe
+npmRebuild: false
+compression: store
+asar: false

@@ -7,12 +7,6 @@ on:
         description: 'Build reason (optional)'
         required: false
         default: 'Manual build'
-  push:
-    branches: [main]
-    paths-ignore:
-      - '**.md'
-      - 'examples/**'
-      - '.gitignore'
 
 permissions:
   contents: write
@@ -52,16 +46,19 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: 🗄️ Generate Prisma client
-        run: npx prisma generate
-        env:
-          DATABASE_URL: "file:./db/custom.db"
-
       - name: ⚡ Build Next.js standalone
         run: npx next build
         env:
           DATABASE_URL: "file:./db/custom.db"
           NEXT_TELEMETRY_DISABLED: "1"
+
+      - name: 🧹 Remove Prisma from standalone build
+        shell: cmd
+        run: |
+          if exist .next\standalone\node_modules\@prisma rmdir /S /Q .next\standalone\node_modules\@prisma
+          if exist .next\standalone\node_modules\.prisma rmdir /S /Q .next\standalone\node_modules\.prisma
+          if exist .next\standalone\.next\node_modules\@prisma rmdir /S /Q .next\standalone\.next\node_modules\@prisma
+          if exist .next\standalone\.next\node_modules\.prisma rmdir /S /Q .next\standalone\.next\node_modules\.prisma
 
       - name: 📂 Copy static assets
         shell: cmd

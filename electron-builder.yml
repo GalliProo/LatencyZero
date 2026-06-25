@@ -4,18 +4,28 @@ productName: LatencyZero
 directories:
   output: release
 
+asar: false
+compression: maximum
+
 files:
-  - ".next/standalone/**/*"
-  - ".next/static/**/*"
-  - "public/**/*"
-  - "electron-dist/**/*"
-  - "electron/resources/**/*"
-  - "prisma/**/*"
-  - "package.json"
+  - from: "."
+    filter:
+      - "electron-dist/**/*"
+      - ".next/standalone/**/*"
+      - ".next/static/**/*"
+      - "public/**/*"
+      - "prisma/**/*"
+      - "package.json"
+      - "!**/node_modules/@prisma/client/**"
+      - "!**/node_modules/.prisma/**"
 
 extraResources:
   - from: ".next/standalone"
     to: "app/.next/standalone"
+    filter:
+      - "**/*"
+      - "!node_modules/@prisma/client/**"
+      - "!node_modules/.prisma/**"
   - from: ".next/static"
     to: "app/.next/static"
   - from: "public"
@@ -27,8 +37,7 @@ extraResources:
 
 win:
   target:
-    - portable
+    - target: portable
+      arch:
+        - x64
   artifactName: "LatencyZero.exe"
-
-asar: false
-compression: maximum

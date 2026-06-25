@@ -96,5 +96,6 @@
     "tw-animate-css": "^1.3.5",
     "typescript": "^5",
     "esbuild": "^0.25.5"
+    "ts-node": "^10.9.2",
   }
 }

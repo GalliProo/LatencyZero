@@ -88,21 +88,24 @@ function Carousel({
     [scrollPrev, scrollNext]
   )
 
-  React.useEffect(() => {
-    if (!api || !setApi) return
-    setApi(api)
-  }, [api, setApi])
+React.useEffect(() => {
+  if (!api) {
+    return
+  }
 
-  React.useEffect(() => {
-    if (!api) return
+  const frame = window.requestAnimationFrame(() => {
     onSelect(api)
-    api.on("reInit", onSelect)
-    api.on("select", onSelect)
+  })
 
-    return () => {
-      api?.off("select", onSelect)
-    }
-  }, [api, onSelect])
+  api.on("reInit", onSelect)
+  api.on("select", onSelect)
+
+  return () => {
+    window.cancelAnimationFrame(frame)
+    api?.off("reInit", onSelect)
+    api?.off("select", onSelect)
+  }
+}, [api, onSelect])
 
   return (
     <CarouselContext.Provider

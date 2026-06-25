@@ -30,7 +30,7 @@ jobs:
       - name: ✅ Run tests
         run: npx jest --no-cache
       - name: ✅ Run lint
-        run: npx eslint .
+        run: npm run lint
       - name: ✅ TypeScript check
         run: npx tsc --noEmit
 
